@@ -21,11 +21,12 @@ Then, add either the Subscribee or the Subscription class to the desired classes
 
 Two methods are available to subscribe to a Subscribee:
 ```dart
-// In a class that is mixin with Subscriber
+// In a class that is mixin with Subscriber:
+
 subscribee.addSubscriber<type>(this); 
 subscribe<type>(subscribee);
 
-// Each method as an equivalent to unsubscribe:
+// Each method has an equivalent to unsubscribe:
 subscribee.removeSubscriber<type>(this);
 unsubscribe<type>(subscribee);
 ```
