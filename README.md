@@ -33,6 +33,8 @@ unsubscribe<type>(subscribee);
 
 Both methods are equivalents, use them with your own preference.
 
+Having to pass the Subscriber in the method allow an object to pass a variable as Subscribee instead of using this.
+
 To notify subscribers, use the following method in the Subscribee class:
 ```dart
 notify<type>(value); // The value and the given type must be of the same type
