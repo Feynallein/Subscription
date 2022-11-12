@@ -1,6 +1,8 @@
+import 'package:singleton/singleton.dart';
+
 import '../subscription.dart';
 
-mixin Subscribee {
+mixin Subscribee on Singleton {
   final Map<dynamic, List<Subscriber>> subscriptions = <dynamic, List<Subscriber>>{};
 
   void notify<T>(T notification){
@@ -11,6 +13,6 @@ mixin Subscribee {
     });
   }
 
-  //void addSubscriber<T>(Subscriber subscriber) => subscriptions.update(T, (subscribers) => subscribers..add(subscriber), ifAbsent: () => [subscriber]);
-  //void removeSubscriber<T>(Subscriber subscriber) => subscriptions[T]?.remove(subscriber);
+  void addSubscriber<T>(Subscriber subscriber) => subscriptions.update(T, (subscribers) => subscribers..add(subscriber), ifAbsent: () => [subscriber]);
+  void removeSubscriber<T>(Subscriber subscriber) => subscriptions[T]?.remove(subscriber);
 }
