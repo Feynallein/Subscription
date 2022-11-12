@@ -29,6 +29,16 @@ unsubscribe<type>(subscribee);
 ```
 
 Both methods are equivalents, use them with your own preference.
+
+To notify in the Subscribee class, use the following method:
+```dart
+@override
+notify<type>(type value);
+```
+This will notify every subscriber over the selected type.
+
+The notification is then received in the```dart onNotification(type notification)``` method in the Subscriber class.
+
 See ```/example/main.dart``` for a working example.
 
 ## Additional information
