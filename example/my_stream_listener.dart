@@ -14,7 +14,7 @@ class MyStreamListener with Subscriber {
   }
 
   @override
-  void notify<T>(T notification){
+  void onNotification<T>(T notification){
     switch(T) {
       case int:
         print("Notification of type int. Value: $notification");

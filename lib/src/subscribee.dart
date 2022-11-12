@@ -10,7 +10,7 @@ mixin Subscribee {
     subscriptions.forEach((subscription, subscribers) {
       if(subscription == T){
         for (var subscriber in subscribers) {
-          subscriber.notify(notification);
+          subscriber.onNotification(notification);
         }
       }
     });
