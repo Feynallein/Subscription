@@ -1,39 +1,41 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+A simple subscription system. 
+Allows a subscriber object to subscribe to a subscribee object over one or multiple types.
+The subscriber gets notified when the subscribee notifies over the subscribed type.
+Both Subscriber and Subscribee are mixins.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Add the following to your file:
+
+```dart
+import 'package:subscription/subscription.dart';
+```
+
+Then, add either the Subscribee or the Subscription class to the desired classes.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
+Two methods are available to subscribe to an object:
 ```dart
-const like = 'sample';
+// In a class that is mixin with Subscriber
+subscribee.addSubscriber<type>(this); 
+subscribe<type>(subscribee);
+
+// Each method as an equivalent to unsubscribe:
+subscribee.removeSubscriber<type>(this);
+unsubscribe<type>(subscribee);
 ```
+
+Both methods are equivalents, use them with your own preference.
+See ```/example/main.dart``` for a working example.
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This system is particularly useful when you want to listen to the same stream at different places in your code.
+You can create a single class that listen to the stream and notifies Subscriber when the stream has a new value.
+Additionally, the Subscribee class works well with a singleton as you won't need to pass the Subscribee object in the code.
+The Subscribee class is not a Singleton by default as I want to allow users to have multiple instances of the same classes that does not share the same subscribers.
+
+You can fork and contribute to the package from the [github page](https://github.com/Feynallein/Subscription).
